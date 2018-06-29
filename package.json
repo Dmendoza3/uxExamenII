@@ -1,5 +1,5 @@
 {
-  "name": "examenII",
+  "name": "uxExamenII",
   "private": true,
   "scripts": {
     "start": "meteor run",
