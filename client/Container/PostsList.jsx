@@ -12,14 +12,21 @@ export default class PostsList extends React.Component {
 
   componentWillMount(){
     Tracker.autorun(()=>{
-      var todos = todoContainer.find({}).fetch()
-      this.setState({list: todos})
+      var posts = wallContainer.find({}).fetch()
+      this.setState({list: posts})
     })
   }
 
   render(){
     return (
         <div>
+          { this.state.list.map((val, index)=>{
+              return(
+                <div key={index}>{val.wall}
+                </div>
+              )
+            }) 
+          }
         </div>
     )
   }
