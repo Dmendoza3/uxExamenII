@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import 'bulma/css/bulma.css'
 
 import {wallContainer} from '../../imports/api/wall'
 import {counts} from '../../imports/api/countedPosts';
@@ -73,23 +74,39 @@ export default class App extends Component {
     render(){
         return(
             <div>
-                <AccountsUIWrapper/>
-                <p/>
-                { Meteor.userId() ?
-                    <div>
-                        <span className="countedPosts">
-                            Publicos: {this.state.publicCount}
-                        </span>
-                        <span className="countedPosts"> 
-                            Privados: {this.state.privateCount}
-                        </span>
-
-                        <input ref="input" placeholder="Mensaje"/>
-                        <label htmlFor="publicChk">Publico</label><input type="checkbox" id="publicChk" ref="publicMsg" defaultChecked="true"/>
-                        <button onClick={this.handleSubmit.bind(this)}>Add</button>
-                        <PostsList uid={Meteor.userId()}/>
-                    </div> : ''
-                }
+                <section className="hero is-info is-bold">
+                    <div className="hero-body">
+                        <div className="container title">
+                           <AccountsUIWrapper/>
+                         </div>
+                    
+                
+                        { Meteor.userId() ?
+                        <div>
+                            <div className="container">
+                                <h1 className="title">
+                                    <div className="field has-addons">
+                                        <input ref="input" placeholder="Mensaje" className="input is-info control"/>
+                                        <button className="button is-outlined is-light control" onClick={this.handleSubmit.bind(this)}>Add</button>
+                                    </div>
+                                </h1>
+                                <h2 className="subtitle">
+                                    <label htmlFor="publicChk" className="">Publico:&nbsp;</label><input type="checkbox" id="publicChk" ref="publicMsg" defaultChecked="true" className=""/>
+                                </h2>
+                                <h2 className="subtitle">
+                                    <span className="countedPosts">
+                                        Publicos: {this.state.publicCount}
+                                    </span>&nbsp;
+                                    <span className="countedPosts"> 
+                                        Privados: {this.state.privateCount}
+                                    </span>
+                                </h2>
+                            </div>
+                            <PostsList uid={Meteor.userId()}/>
+                        </div> : ''
+                        }
+                    </div>
+                </section>
             </div>
         )
     }

@@ -26,11 +26,23 @@ export default class PostsList extends React.Component {
           { this.state.list.map((val, index)=>{
             if (this.props.uid==val.owner || val.type == "public"){
               return(
-                <div key={index} className="post-container">
-                  <span className="post-user">{val.username}:</span>
-                  <span className="post-content">{val.wall}</span>
-                  <span className="post-type"> type: {val.type}</span>
-                </div>
+                <section key={index} className="hero is-info is-bold">
+                  <div className="hero-body">
+                      <div className="container">
+                          <h1 className="title">
+                            {val.username}:
+                          </h1>
+                          <h2 className="subtitle">
+                            {val.wall}
+                          </h2>
+                          
+                          {val.type=="public"?
+                            <span className="tag is-success is-medium">Publico</span>:
+                            <span className="tag is-link is-medium">Privado</span>
+                          }
+                      </div>
+                  </div>
+                </section>
               )
             }
             }) 
